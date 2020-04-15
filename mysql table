@@ -2,7 +2,7 @@ CREATE SCHEMA IF NOT EXISTS `rentshare` DEFAULT CHARACTER SET latin1 ;
 USE `rentshare` ;
 
 -- -----------------------------------------------------
--- Table `test`.`user`
+-- Table `rentshare`.`advert`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `rentshare`.`advert` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
@@ -11,6 +11,9 @@ CREATE TABLE IF NOT EXISTS `rentshare`.`advert` (
   `price` DECIMAL(10, 2) NULL DEFAULT NULL,
   `imageUrl` VARCHAR(500) NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
+
+
+
 
 ---------------------------------------------------------------------------------------------------------------------
 

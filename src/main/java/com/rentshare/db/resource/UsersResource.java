@@ -59,6 +59,6 @@ public class UsersResource {
 
     @GetMapping(value = "/search/{name}")
     public List<Users> search(@PathVariable("name") String name) {
-        return usersRepository.findByName(name);
+        return usersRepository.findByNameContaining(name);
     }
 }

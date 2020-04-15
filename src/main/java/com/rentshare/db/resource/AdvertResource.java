@@ -3,7 +3,6 @@ package com.rentshare.db.resource;
 import com.rentshare.db.model.Advert;
 import com.rentshare.db.model.Users;
 import com.rentshare.db.repository.AdvertRepository;
-import com.rentshare.db.repository.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -32,6 +31,11 @@ public class AdvertResource {
     public List<Advert> deleteAll() {
         advertRepository.deleteAll();
         return advertRepository.findAll();
+    }
+
+    @GetMapping(value = "/search/{title}")
+    public List<Advert> search(@PathVariable("title") String title) {
+        return advertRepository.findByTitleContaining(title);
     }
 
 }

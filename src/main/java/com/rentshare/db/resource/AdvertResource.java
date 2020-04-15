@@ -28,4 +28,10 @@ public class AdvertResource {
         return advertRepository.findAll();
     }
 
+    @GetMapping(value = "/delete")
+    public List<Advert> deleteAll() {
+        advertRepository.deleteAll();
+        return advertRepository.findAll();
+    }
+
 }

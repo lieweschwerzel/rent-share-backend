@@ -37,21 +37,23 @@ public class AdvertResource {
 //    }
 //
     @PutMapping("/update/{id}")
-    public ResponseEntity<?> saveResource(@RequestBody Advert newAdvert,
+    public ResponseEntity<?> saveResource(@RequestBody Advert updatedAdvert,
                                           @PathVariable("id") Long id) {
-        Advert advert = advertRepository.findOne(id);
+        Advert existingAdvert = advertRepository.findOne(id);
 
-        if (advert !=null){
-            System.out.println(advert.toString());
-            advert = new Advert();
+        if (existingAdvert !=null){
+            System.out.println(existingAdvert.toString());
+            Advert advert = new Advert();
             advert.setId(id);
-            advert.setTitle(newAdvert.getTitle());
+            advert.setTitle(updatedAdvert.getTitle());
+            advert.setDescription(updatedAdvert.getDescription());
 
             advertRepository.save(advert);
+            return ResponseEntity.ok("resource saved");
         }
 
+        return ResponseEntity.ok("resource NOT saved, ID doesnt exist");
 
-        return ResponseEntity.ok("resource saved");
     }
 
 //    @RequestMapping(method = RequestMethod.PUT, value = "topicId/{topicId}")

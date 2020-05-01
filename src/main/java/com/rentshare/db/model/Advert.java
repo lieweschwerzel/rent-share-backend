@@ -1,6 +1,7 @@
 package com.rentshare.db.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 public class Advert {
@@ -8,24 +9,25 @@ public class Advert {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name = "id")
-    private Integer id;
+    private Long id;
     @Column(name = "title")
     private String title;
+
     @Column(name = "description")
     private String description;
+
     @Column(name = "price")
     private Long price;
     @Column(name = "imageUrl")
     private String imageUrl;
-
     public Advert() {
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -59,5 +61,16 @@ public class Advert {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    @Override
+    public String toString() {
+        return "Advert{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", imageUrl='" + imageUrl + '\'' +
+                '}';
     }
 }

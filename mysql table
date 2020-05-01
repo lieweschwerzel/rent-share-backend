@@ -14,23 +14,3 @@ CREATE TABLE IF NOT EXISTS `rentshare`.`advert` (
 
 
 
-
----------------------------------------------------------------------------------------------------------------------
-
-
-
-
-
-CREATE SCHEMA IF NOT EXISTS `test` DEFAULT CHARACTER SET latin1 ;
-USE `test` ;
-
--- -----------------------------------------------------
--- Table `test`.`user`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `test`.`user` (
-  `id` INT(11) NOT NULL,
-  `active` BIT(1) NOT NULL,
-  `password` VARCHAR(255) NULL DEFAULT NULL,
-  `roles` VARCHAR(255) NULL DEFAULT NULL,
-  `user_name` VARCHAR(255) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`))

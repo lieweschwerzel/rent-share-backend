@@ -10,7 +10,7 @@ public interface AdvertRepository extends JpaRepository<Advert, Long> {
 
     List<Advert> findByTitleContaining(String title);
 
-    Advert findAdvertById (String id);
+//    Advert findAdvertById (String id);
 
 //    <Advert> void findAdvertById (Long id);
 

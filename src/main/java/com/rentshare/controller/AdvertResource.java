@@ -1,10 +1,9 @@
-package com.rentshare.db.resource;
+package com.rentshare.controller;
 
-import com.rentshare.db.model.Advert;
-import com.rentshare.db.repository.AdvertRepository;
+import com.rentshare.model.Advert;
+import com.rentshare.repository.AdvertRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,7 +31,7 @@ public class AdvertResource {
     @PutMapping("/update/{id}")
     public ResponseEntity<?> saveResource(@RequestBody Advert updatedAdvert,
                                           @PathVariable("id") Long id) {
-        Advert existingAdvert = advertRepository.findOne(id);
+        Advert existingAdvert = advertRepository.findAdvertById(id);
 
         if (existingAdvert !=null){
             System.out.println(existingAdvert.toString());

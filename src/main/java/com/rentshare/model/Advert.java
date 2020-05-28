@@ -1,4 +1,4 @@
-package com.rentshare.db.model;
+package com.rentshare.model;
 
 import javax.persistence.*;
 

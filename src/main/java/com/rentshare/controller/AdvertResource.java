@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/rest/advert")
+@RequestMapping(value = "/advert")
 public class AdvertResource {
     @Autowired
     AdvertRepository advertRepository;
@@ -34,7 +34,6 @@ public class AdvertResource {
         Advert existingAdvert = advertRepository.findAdvertById(id);
 
         if (existingAdvert !=null){
-            System.out.println(existingAdvert.toString());
             Advert advert = new Advert();
             advert.setId(id);
             advert.setTitle(updatedAdvert.getTitle());

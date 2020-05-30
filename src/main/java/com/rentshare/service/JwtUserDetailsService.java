@@ -9,7 +9,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.rentshare.dao.UserDao;
+import com.rentshare.repository.UserDao;
 import com.rentshare.model.DAOUser;
 import com.rentshare.model.UserDTO;
 

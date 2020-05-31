@@ -2,7 +2,9 @@ package com.rentshare.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "user")
@@ -16,6 +18,12 @@ public class DAOUser {
 	@Column
 	@JsonIgnore
 	private String password;
+//	@OneToMany(targetEntity = Advert.class, cascade = CascadeType.ALL)
+//	@JoinColumn(name = "ua_fk", referencedColumnName = "id" )
+//	private List<Advert> adverts;
+
+	public DAOUser() {
+	}
 
 	public String getUsername() {
 		return username;

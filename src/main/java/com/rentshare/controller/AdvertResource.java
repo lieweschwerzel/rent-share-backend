@@ -3,7 +3,9 @@ package com.rentshare.controller;
 import com.rentshare.model.Advert;
 import com.rentshare.repository.AdvertRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,37 +22,41 @@ public class AdvertResource {
         return advertRepository.findAll();
     }
 
-    @PostMapping(value = "/save")
+
+    @RequestMapping(value="/save",
+            method = RequestMethod.POST,
+            produces = {MediaType.APPLICATION_JSON_VALUE})
     @ResponseStatus(value = HttpStatus.OK)
-    public List<Advert> persist(@RequestBody final Advert advert) {
+    public ResponseEntity<?> persistResource(@RequestBody final Advert advert) {
         advertRepository.save(advert);
-        return advertRepository.findAll();
+        HttpHeaders httpHeaders = new HttpHeaders();
+        return new ResponseEntity<>(advert, httpHeaders, HttpStatus.CREATED);
     }
 
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<?> saveResource(@RequestBody Advert updatedAdvert,
-                                          @PathVariable("id") Long id) {
+    public ResponseEntity<?> updateResource(@RequestBody Advert updatedAdvert,
+                                            @PathVariable("id") Long id) {
         Advert existingAdvert = advertRepository.findAdvertById(id);
 
-        if (existingAdvert !=null){
+        if (existingAdvert != null) {
             Advert advert = new Advert();
             advert.setId(id);
             advert.setTitle(updatedAdvert.getTitle());
             advert.setDescription(updatedAdvert.getDescription());
 
             advertRepository.save(advert);
-            return ResponseEntity.ok("resource saved");
+            return ResponseEntity.ok("resource updated");
         }
 
-        return ResponseEntity.ok("resource NOT saved, ID doesnt exist");
+        return ResponseEntity.ok("resource NOT updated, ID doesnt exist");
 
     }
 
     @GetMapping(value = "/delete")
-    public List<Advert> deleteAll() {
+    public ResponseEntity<?> deleteAll() {
         advertRepository.deleteAll();
-        return advertRepository.findAll();
+        return ResponseEntity.ok("all ads deleted");
     }
 
     @GetMapping(value = "/search/{title}")

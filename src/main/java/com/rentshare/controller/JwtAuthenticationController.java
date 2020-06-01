@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.rentshare.service.JwtUserDetailsService;
 
-
 import com.rentshare.config.JwtTokenUtil;
 import com.rentshare.model.JwtRequest;
 import com.rentshare.model.JwtResponse;

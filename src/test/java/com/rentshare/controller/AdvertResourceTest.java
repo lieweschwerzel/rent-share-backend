@@ -20,9 +20,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 
-//@WebMvcTest(AdvertResource.class)
 @RunWith(SpringJUnit4ClassRunner.class)
-//@RunWith(Springer.class)
 public class AdvertResourceTest {
 
     private MockMvc mockMvc;
@@ -40,20 +38,11 @@ public class AdvertResourceTest {
     }
 
     @Test
-    public void getAll() throws Exception {
-
-        mockMvc.perform(get("/advert/all"))
-                .andExpect(status().isOk());
-    }
-
-    @Test
     public void persistResource() throws Exception {
         Advert advert = new Advert();
         advert.setTitle("Book");
         ObjectMapper objectMapper = new ObjectMapper();
         String json = objectMapper.writeValueAsString(advert);
-
-//            Mockito.when(advertResource.persistResource(advert)).thenReturn(js);
 
         mockMvc.perform(post("/advert/save")
                 .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
@@ -65,7 +54,10 @@ public class AdvertResourceTest {
     }
 
     @Test
-    public void updateResource() {
+    public void getAll() throws Exception {
+
+        mockMvc.perform(get("/advert/all"))
+                .andExpect(status().isOk());
     }
 
     @Test
@@ -74,6 +66,10 @@ public class AdvertResourceTest {
                 .andExpect(status().isOk())
                 .andExpect(content().string("all ads deleted"));
 
+    }
+
+    @Test
+    public void updateResource() {
     }
 
     @Test

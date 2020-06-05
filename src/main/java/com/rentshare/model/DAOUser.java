@@ -20,12 +20,6 @@ public class DAOUser {
 	@JsonIgnore
 	private String password;
 
-	@Column(name = "latitude")
-	private String latitude;
-
-	@Column(name = "longitude")
-	private String longitude;
-
 	@Column(name = "zipcode")
 	private String zipcode;
 
@@ -54,14 +48,6 @@ public class DAOUser {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-	public String getLatitude() { return latitude; }
-
-	public void setLatitude(String latitude) { this.latitude = latitude; }
-
-	public String getLongitude() { return longitude; }
-
-	public void setLongitude(String longitude) { this.longitude = longitude; }
 
 	public String getZipcode() { return zipcode; }
 

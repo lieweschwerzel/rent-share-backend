@@ -26,6 +26,15 @@ public class DAOUser {
 	@Column(name = "longitude")
 	private String longitude;
 
+	@Column(name = "zipcode")
+	private String zipcode;
+
+	@Column(name = "streetName")
+	private String streetName;
+
+	@Column(name = "houseNumber")
+	private int houseNumber;
+
 	public Long getId() { return id; }
 
 	public void setId(Long id) { this.id = id; }
@@ -53,4 +62,16 @@ public class DAOUser {
 	public String getLongitude() { return longitude; }
 
 	public void setLongitude(String longitude) { this.longitude = longitude; }
+
+	public String getZipcode() { return zipcode; }
+
+	public void setZipcode(String zipcode) { this.zipcode = zipcode; }
+
+	public String getStreetName() { return streetName; }
+
+	public void setStreetName(String streetName) { this.streetName = streetName; }
+
+	public int getHouseNumber() { return houseNumber; }
+
+	public void setHouseNumber(int houseNumber) { this.houseNumber = houseNumber; }
 }

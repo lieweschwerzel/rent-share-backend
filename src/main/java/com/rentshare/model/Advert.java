@@ -9,6 +9,7 @@ public class Advert {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
+
     @Column(name = "title")
     private String title;
 
@@ -17,8 +18,19 @@ public class Advert {
 
     @Column(name = "price")
     private Long price;
+
     @Column(name = "imageUrl")
     private String imageUrl;
+
+    @Column(name = "latitude")
+    private String latitude;
+
+    @Column(name = "longitude")
+    private String longitude;
+
+    @Column(name = "FK_userId")
+    private Long userId;
+
     public Advert() {
     }
 
@@ -50,7 +62,7 @@ public class Advert {
         return price;
     }
 
-    public void setPrice(long price) {
+    public void setPrice(Long price) {
         this.price = price;
     }
 
@@ -62,6 +74,18 @@ public class Advert {
         this.imageUrl = imageUrl;
     }
 
+    public String getLatitude() { return latitude; }
+
+    public void setLatitude(String latitude) { this.latitude = latitude; }
+
+    public String getLongitude() { return longitude; }
+
+    public void setLongitude(String longitude) { this.longitude = longitude; }
+
+    public Long getUserId() { return userId; }
+
+    public void setUserId(Long userId) { this.userId = userId; }
+
     @Override
     public String toString() {
         return "Advert{" +
@@ -70,6 +94,9 @@ public class Advert {
                 ", description='" + description + '\'' +
                 ", price=" + price +
                 ", imageUrl='" + imageUrl + '\'' +
+                ", latitude='" + latitude + '\'' +
+                ", longitude='" + longitude + '\'' +
+                ", userId='" + userId + '\'' +
                 '}';
     }
 }

@@ -1,8 +1,10 @@
 package com.rentshare.model;
 
 public class UserDTO {
+
 	private String username;
 	private String password;
+
 
 	public String getUsername() {
 		return username;

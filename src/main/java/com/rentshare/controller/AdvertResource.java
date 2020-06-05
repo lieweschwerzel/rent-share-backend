@@ -14,6 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "/advert")
 public class AdvertResource {
+
     @Autowired
     AdvertRepository advertRepository;
 
@@ -21,7 +22,6 @@ public class AdvertResource {
     public List<Advert> getAll() {
         return advertRepository.findAll();
     }
-
 
     @RequestMapping(value="/save",
             method = RequestMethod.POST,
@@ -32,7 +32,6 @@ public class AdvertResource {
         HttpHeaders httpHeaders = new HttpHeaders();
         return new ResponseEntity<>(advert, httpHeaders, HttpStatus.CREATED);
     }
-
 
     @PutMapping("/update/{id}")
     public ResponseEntity<?> updateResource(@RequestBody Advert updatedAdvert,
@@ -64,4 +63,8 @@ public class AdvertResource {
         return advertRepository.findByTitleContaining(title);
     }
 
+    @GetMapping(value = "/search/{userId}")
+    public List<Advert> search(@PathVariable("userId") Long userId) {
+        return advertRepository.findByUserId(userId);
+    }
 }

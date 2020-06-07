@@ -1,9 +1,7 @@
 package com.rentshare.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.rentshare.model.Advert;
 import com.rentshare.model.DAOUser;
-import com.rentshare.repository.AdvertRepository;
 import com.rentshare.repository.UserDao;
 import org.hamcrest.Matchers;
 import org.junit.Before;

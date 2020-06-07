@@ -9,6 +9,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @RestController
@@ -72,4 +73,11 @@ public class AdvertResource {
     public List<Advert> findByUserId(@PathVariable("userId") Long userId) {
         return advertRepository.findByUserId(userId);
     }
+
+    @RequestMapping(value = "/delete/userId/{userId}", method = RequestMethod.DELETE)
+    @Transactional
+    public void deleteAdvertByUserId(@PathVariable("userId") Long userId) {
+        advertRepository.deleteAdvertByUserId(userId);
+    }
+
 }

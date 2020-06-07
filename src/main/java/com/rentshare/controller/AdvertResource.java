@@ -58,12 +58,17 @@ public class AdvertResource {
         return ResponseEntity.ok("all ads deleted");
     }
 
-    @GetMapping(value = "/search/{title}")
+    @GetMapping(value = "/search/title/{title}")
     public List<Advert> search(@PathVariable("title") String title) {
         return advertRepository.findByTitleContaining(title);
     }
 
-    @GetMapping(value = "/search/id/{userId}")
+    @GetMapping(value = "/search/id/{id}")
+    public Advert findById(@PathVariable("id") Long id) {
+        return advertRepository.findAdvertById(id);
+    }
+
+    @GetMapping(value = "/search/userId/{userId}")
     public List<Advert> findByUserId(@PathVariable("userId") Long userId) {
         return advertRepository.findByUserId(userId);
     }

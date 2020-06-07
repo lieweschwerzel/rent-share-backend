@@ -21,15 +21,37 @@ public class UserResource {
     @Autowired
     UserDao userDao;
 
+    @GetMapping(value = "/all")
+    public List<DAOUser> getAll() {
+        return userDao.findAll();
+    }
+
+    @RequestMapping(value = "/save",
+            method = RequestMethod.POST,
+            produces = {MediaType.APPLICATION_JSON_VALUE})
+    @ResponseStatus(value = HttpStatus.OK)
+    public ResponseEntity<?> persistResource(@RequestBody final DAOUser daoUser) {
+        userDao.save(daoUser);
+        HttpHeaders httpHeaders = new HttpHeaders();
+        return new ResponseEntity<>(daoUser, httpHeaders, HttpStatus.CREATED);
+    }
+
     @RequestMapping(value = "/search/{id}", method = RequestMethod.GET)
-    public DAOUser findDaoUserById(@PathVariable("id") Long id) throws Exception {
+    public DAOUser findDaoUserById(@PathVariable("id") Long id) {
         return userDao.findDAOUserById(id);
     }
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
     @Transactional
-    public void deleteDaoUserById(@PathVariable("id") Long id) throws Exception {
+    public void deleteDaoUserById(@PathVariable("id") Long id) {
         userDao.deleteDAOUserById(id);
     }
 
+    @GetMapping(value = "/admin/delete")
+    public ResponseEntity<?> deleteAll() {
+        userDao.deleteAll();
+        return ResponseEntity.ok("all users deleted");
+    }
+
 }
+

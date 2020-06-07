@@ -63,7 +63,7 @@ public class AdvertResource {
         return advertRepository.findByTitleContaining(title);
     }
 
-    @GetMapping(value = "/search/{userId}")
+    @GetMapping(value = "/search/id/{userId}")
     public List<Advert> findByUserId(@PathVariable("userId") Long userId) {
         return advertRepository.findByUserId(userId);
     }

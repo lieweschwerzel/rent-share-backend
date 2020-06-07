@@ -9,5 +9,6 @@ import com.rentshare.model.DAOUser;
 public interface UserDao extends CrudRepository<DAOUser, Integer> {
 	
 	DAOUser findByUsername(String username);
-	
+	void deleteDAOUserById(Long Id);
+	DAOUser findDAOUserById(Long id);
 }

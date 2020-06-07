@@ -73,9 +73,9 @@ public class JwtUserDetailsServiceTest {
     }
 
 
-    //Delete All users, confirm by reading all users. List should be empty
+    //Delete All test users, confirm by reading all users. List should be empty
     @Test
-    public void save() {
+    public void deleteAllUsersFromDb() {
         // given
         DAOUser user = new DAOUser();
         user.setUsername("alex");

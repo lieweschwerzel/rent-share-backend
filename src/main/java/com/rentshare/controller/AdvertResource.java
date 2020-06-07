@@ -52,7 +52,7 @@ public class AdvertResource {
 
     }
 
-    @GetMapping(value = "/delete")
+    @GetMapping(value = "/admin/delete")
     public ResponseEntity<?> deleteAll() {
         advertRepository.deleteAll();
         return ResponseEntity.ok("all ads deleted");

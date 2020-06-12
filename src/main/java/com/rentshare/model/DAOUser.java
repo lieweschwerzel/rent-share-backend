@@ -3,6 +3,7 @@ package com.rentshare.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "user")
@@ -28,6 +29,9 @@ public class DAOUser {
 
 	@Column(name = "houseNumber")
 	private int houseNumber;
+
+	@Column(name = "createdOn")
+	private LocalDateTime createdOn;
 
 	public Long getId() { return id; }
 
@@ -60,4 +64,10 @@ public class DAOUser {
 	public int getHouseNumber() { return houseNumber; }
 
 	public void setHouseNumber(int houseNumber) { this.houseNumber = houseNumber; }
+
+	public LocalDateTime getCreatedOn() { return createdOn; }
+
+	public void setCreatedOn(LocalDateTime createdOn) {
+		this.createdOn = createdOn;
+	}
 }

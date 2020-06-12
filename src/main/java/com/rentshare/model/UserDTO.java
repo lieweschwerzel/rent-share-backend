@@ -1,5 +1,7 @@
 package com.rentshare.model;
 
+import java.time.LocalDateTime;
+
 public class UserDTO {
 
 	private String username;
@@ -7,6 +9,7 @@ public class UserDTO {
 	private String zipcode;
 	private String streetName;
 	private int houseNumber;
+	private LocalDateTime createdOn;
 
 	public String getUsername() {
 		return username;
@@ -46,5 +49,11 @@ public class UserDTO {
 
 	public void setHouseNumber(int houseNumber) {
 		this.houseNumber = houseNumber;
+	}
+
+	public LocalDateTime getCreatedOn() { return createdOn;
+	}
+
+	public void setCreatedOn(LocalDateTime createdOn) { this.createdOn = createdOn;
 	}
 }

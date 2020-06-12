@@ -39,6 +39,7 @@ public class JwtUserDetailsService implements UserDetailsService {
 		newUser.setZipcode(user.getZipcode());
 		newUser.setStreetName(user.getStreetName());
 		newUser.setHouseNumber(user.getHouseNumber());
+		newUser.setCreatedOn(user.getCreatedOn());
 		return userDao.save(newUser);
 	}
 }

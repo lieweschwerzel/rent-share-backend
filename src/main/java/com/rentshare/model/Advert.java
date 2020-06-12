@@ -1,6 +1,7 @@
 package com.rentshare.model;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 public class Advert {
@@ -30,6 +31,12 @@ public class Advert {
 
     @Column(name = "FK_userId")
     private Long userId;
+
+    @Column(name = "createdOn")
+    private LocalDateTime createdOn;
+
+    @Column(name = "duration")
+    private int duration;
 
     public Advert() {
     }
@@ -85,6 +92,18 @@ public class Advert {
     public Long getUserId() { return userId; }
 
     public void setUserId(Long userId) { this.userId = userId; }
+
+    public LocalDateTime getCreatedOn() { return createdOn;
+    }
+
+    public void setCreatedOn(LocalDateTime createdOn) { this.createdOn = createdOn;
+    }
+
+    public int getDuration() { return duration;
+    }
+
+    public void setDuration(int duration) { this.duration = duration;
+    }
 
     @Override
     public String toString() {

@@ -24,10 +24,10 @@ public class Advert {
     private String imageUrl;
 
     @Column(name = "latitude")
-    private String latitude;
+    private double latitude;
 
     @Column(name = "longitude")
-    private String longitude;
+    private double longitude;
 
     @Column(name = "FK_userId")
     private Long userId;
@@ -81,13 +81,13 @@ public class Advert {
         this.imageUrl = imageUrl;
     }
 
-    public String getLatitude() { return latitude; }
+    public double getLatitude() { return latitude; }
 
-    public void setLatitude(String latitude) { this.latitude = latitude; }
+    public void setLatitude(double latitude) { this.latitude = latitude; }
 
-    public String getLongitude() { return longitude; }
+    public double getLongitude() { return longitude; }
 
-    public void setLongitude(String longitude) { this.longitude = longitude; }
+    public void setLongitude(double longitude) { this.longitude = longitude; }
 
     public Long getUserId() { return userId; }
 

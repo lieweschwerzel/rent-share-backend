@@ -32,6 +32,9 @@ public class Advert {
     @Column(name = "FK_userId")
     private Long userId;
 
+    @Column(name = "FK_advertOwner")
+    private String advertOwner;
+
     @Column(name = "createdOn")
     private LocalDateTime createdOn;
 
@@ -39,6 +42,14 @@ public class Advert {
     private int duration;
 
     public Advert() {
+    }
+
+    public String getAdvertOwner() {
+        return advertOwner;
+    }
+
+    public void setAdvertOwner(String advertOwner) {
+        this.advertOwner = advertOwner;
     }
 
     public Long getId() {

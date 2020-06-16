@@ -41,6 +41,12 @@ public class UserResource {
         return userDao.findDAOUserById(id);
     }
 
+    @RequestMapping(value = "/searchByUser/{username}", method = RequestMethod.GET)
+    public Long findDaoUserById(@PathVariable("username") String username) {
+        Long id = userDao.findByUsername(username).getId();
+        return id;
+    }
+
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
     @Transactional
     public void deleteDaoUserById(@PathVariable("id") Long id) {

@@ -1,6 +1,7 @@
 package com.rentshare.model;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 public class Bid {
@@ -10,17 +11,25 @@ public class Bid {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "fk_username")
-    private String fk_username;
+    @Column(name = "username")
+    private String username;
 
-    @Column(name = "fk_advertId")
-    private Long fk_advertId;
+    @Column(name = "advertId")
+    private Long advertId;
+
+    @Column(name = "amount")
+    private double amount;
+
+    @Column(name = "createdOn")
+    private LocalDateTime createdOn;
 
     public Bid() { }
 
-    public Bid(String fk_username, Long fk_advertId) {
-        this.fk_username = fk_username;
-        this.fk_advertId = fk_advertId;
+    public Bid(String username, Long advertId, double amount, LocalDateTime createdOn) {
+        this.username = username;
+        this.advertId = advertId;
+        this.amount = amount;
+        this.createdOn = createdOn;
     }
 
     public Long getId() {
@@ -31,19 +40,35 @@ public class Bid {
         this.id = id;
     }
 
-    public String getFk_username() {
-        return fk_username;
+    public String getUsername() {
+        return username;
     }
 
-    public void setFk_username(String fk_username) {
-        this.fk_username = fk_username;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public Long getFk_advertId() {
-        return fk_advertId;
+    public Long getAdvertId() {
+        return advertId;
     }
 
-    public void setFk_advertId(Long fk_advertId) {
-        this.fk_advertId = fk_advertId;
+    public void setAdvertId(Long advertId) {
+        this.advertId = advertId;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+    public LocalDateTime getCreatedOn() {
+        return createdOn;
+    }
+
+    public void setCreatedOn(LocalDateTime createdOn) {
+        this.createdOn = createdOn;
     }
 }

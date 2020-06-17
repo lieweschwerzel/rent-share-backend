@@ -41,8 +41,10 @@ public class BidResource {
         if (existingBid != null) {
             Bid bid = new Bid();
             bid.setId(id);
-            bid.setFk_advertId(updatedBid.getFk_advertId());
-            bid.setFk_username(updatedBid.getFk_username());
+            bid.setAdvertId(updatedBid.getAdvertId());
+            bid.setUsername(updatedBid.getUsername());
+            bid.setAmount(updatedBid.getAmount());
+            bid.setCreatedOn(updatedBid.getCreatedOn());
 
             bidRepository.save(bid);
             return ResponseEntity.ok("resource updated");
@@ -60,12 +62,12 @@ public class BidResource {
 
     @GetMapping(value = "/search/advertId/{advertId}")
     public List<Bid> findByAdvertId(@PathVariable("advertId") Long advertId) {
-        return bidRepository.findBidsByFk_advertId(advertId);
+        return bidRepository.findBidsByAdvertId(advertId);
     }
 
     @GetMapping(value = "/search/username/{username}")
     public List<Bid> findByUsername(@PathVariable("username") String username) {
-        return bidRepository.findBidsByFk_username(username);
+        return bidRepository.findBidsByUsername(username);
     }
 
 }

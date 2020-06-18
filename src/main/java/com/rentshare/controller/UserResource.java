@@ -2,7 +2,7 @@ package com.rentshare.controller;
 
 import com.rentshare.model.Advert;
 import com.rentshare.model.DAOUser;
-import com.rentshare.repository.AdvertRepository;
+import com.rentshare.model.UserDTO;
 import com.rentshare.repository.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -42,10 +42,35 @@ public class UserResource {
     }
 
     @RequestMapping(value = "/searchByUser/{username}", method = RequestMethod.GET)
-    public Long findDaoUserById(@PathVariable("username") String username) {
-        Long id = userDao.findByUsername(username).getId();
-        return id;
+    public DAOUser findDaoUserById(@PathVariable("username") String username) {
+//        Long id = .getId();
+        DAOUser returnUser = userDao.findByUsername(username);
+        return returnUser;
     }
+
+    @PutMapping("/update/{username}")
+    public ResponseEntity<?> updateUser(@RequestBody UserDTO updatedUser,
+                                            @PathVariable("username") String username) {
+
+//        userDao.updateUserDetails(updatedUser.getStreetName(), updatedUser.getHouseNumber(), updatedUser.getZipcode(), username);
+
+        DAOUser existingUser = userDao.findByUsername(username);
+
+        if (existingUser != null) {
+            DAOUser daoUser = new DAOUser();
+            daoUser.setUsername(username);
+            daoUser.setId(existingUser.getId());
+            daoUser.setStreetName(updatedUser.getStreetName());
+            daoUser.setHouseNumber(updatedUser.getHouseNumber());
+            daoUser.setZipcode(updatedUser.getStreetName());
+
+            userDao.save(daoUser);
+            return ResponseEntity.ok("resource updated");
+        }
+        return null;
+    }
+
+
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
     @Transactional
